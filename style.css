@@ -1,0 +1,1545 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
+}
+
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
+
+
+
+
+
+/* SIDEBAR */
+#sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 280px;
+	height: 100%;
+	background: var(--light);
+	z-index: 2000;
+	font-family: var(--lato);
+	transition: .3s ease;
+	overflow-x: hidden;
+	scrollbar-width: none;
+}
+#sidebar::--webkit-scrollbar {
+	display: none;
+}
+#sidebar.hide {
+	width: 60px;
+}
+#sidebar .brand {
+	font-size: 24px;
+	font-weight: 700;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	color: var(--blue);
+	position: sticky;
+	top: 0;
+	left: 0;
+	background: var(--light);
+	z-index: 500;
+	padding-bottom: 20px;
+	box-sizing: content-box;
+}
+#sidebar .brand .bx {
+	min-width: 60px;
+	display: flex;
+	justify-content: center;
+}
+#sidebar .side-menu {
+	width: 100%;
+	margin-top: 48px;
+}
+#sidebar .side-menu li {
+	height: 48px;
+	background: transparent;
+	margin-left: 6px;
+	border-radius: 48px 0 0 48px;
+	padding: 4px;
+}
+#sidebar .side-menu li.active {
+	background: var(--grey);
+	position: relative;
+}
+#sidebar .side-menu li.active::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	top: -40px;
+	right: 0;
+	box-shadow: 20px 20px 0 var(--grey);
+	z-index: -1;
+}
+#sidebar .side-menu li.active::after {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	bottom: -40px;
+	right: 0;
+	box-shadow: 20px -20px 0 var(--grey);
+	z-index: -1;
+}
+#sidebar .side-menu li a {
+	width: 100%;
+	height: 100%;
+	background: var(--light);
+	display: flex;
+	align-items: center;
+	border-radius: 48px;
+	font-size: 16px;
+	color: var(--dark);
+	white-space: nowrap;
+	overflow-x: hidden;
+}
+#sidebar .side-menu.top li.active a {
+	color: var(--blue);
+}
+#sidebar.hide .side-menu li a {
+	width: calc(48px - (4px * 2));
+	transition: width .3s ease;
+}
+#sidebar .side-menu li a.logout {
+	color: var(--red);
+}
+#sidebar .side-menu.top li a:hover {
+	color: var(--blue);
+}
+#sidebar .side-menu li a .bx {
+	min-width: calc(60px  - ((4px + 6px) * 2));
+	display: flex;
+	justify-content: center;
+}
+/* SIDEBAR */
+
+
+
+
+
+/* CONTENT */
+#content {
+	position: relative;
+	width: calc(100% - 280px);
+	left: 280px;
+	transition: .3s ease;
+}
+#sidebar.hide ~ #content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
+
+
+
+
+/* NAVBAR */
+#content nav {
+	height: 56px;
+	background: var(--light);
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+	font-family: var(--lato);
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#content nav::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	bottom: -40px;
+	left: 0;
+	border-radius: 50%;
+	box-shadow: -20px -20px 0 var(--light);
+}
+#content nav a {
+	color: var(--dark);
+}
+#content nav .bx.bx-menu {
+	cursor: pointer;
+	color: var(--dark);
+}
+#content nav .nav-link {
+	font-size: 16px;
+	transition: .3s ease;
+}
+#content nav .nav-link:hover {
+	color: var(--blue);
+}
+#content nav form {
+	max-width: 400px;
+	width: 100%;
+	margin-right: auto;
+}
+#content nav form .form-input {
+	display: flex;
+	align-items: center;
+	height: 36px;
+}
+#content nav form .form-input input {
+	flex-grow: 1;
+	padding: 0 16px;
+	height: 100%;
+	border: none;
+	background: var(--grey);
+	border-radius: 36px 0 0 36px;
+	outline: none;
+	width: 100%;
+	color: var(--dark);
+}
+#content nav form .form-input button {
+	width: 36px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--blue);
+	color: var(--light);
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 36px 36px 0;
+	cursor: pointer;
+}
+#content nav .notification {
+	font-size: 20px;
+	position: relative;
+}
+#content nav .notification .num {
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid var(--light);
+	background: var(--red);
+	color: var(--light);
+	font-weight: 700;
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#content nav .profile img {
+	width: 36px;
+	height: 36px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+#content nav .switch-mode {
+	display: block;
+	min-width: 50px;
+	height: 25px;
+	border-radius: 25px;
+	background: var(--grey);
+	cursor: pointer;
+	position: relative;
+}
+#content nav .switch-mode::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	bottom: 2px;
+	width: calc(25px - 4px);
+	background: var(--blue);
+	border-radius: 50%;
+	transition: all .3s ease;
+}
+#content nav #switch-mode:checked + .switch-mode::before {
+	left: calc(100% - (25px - 4px) - 2px);
+}
+/* NAVBAR */
+
+
+
+
+
+/* MAIN */
+#content main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+#content main .head-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
+}
+#content main .head-title .left h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: var(--dark);
+}
+#content main .head-title .left .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+}
+#content main .head-title .left .breadcrumb li {
+	color: var(--dark);
+}
+#content main .head-title .left .breadcrumb li a {
+	color: var(--dark-grey);
+	pointer-events: none;
+}
+#content main .head-title .left .breadcrumb li a.active {
+	color: var(--blue);
+	pointer-events: unset;
+}
+#content main .head-title .btn-download {
+	height: 36px;
+	padding: 0 16px;
+	border-radius: 36px;
+	background: var(--blue);
+	color: var(--light);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 10px;
+	font-weight: 500;
+}
+
+
+
+
+#content main .box-info {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: 24px;
+	margin-top: 36px;
+}
+#content main .box-info li {
+	padding: 24px;
+	background: var(--light);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+}
+#content main .box-info li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#content main .box-info li:nth-child(1) .bx {
+	background: var(--light-blue);
+	color: var(--blue);
+}
+#content main .box-info li:nth-child(2) .bx {
+	background: var(--light-yellow);
+	color: var(--yellow);
+}
+#content main .box-info li:nth-child(3) .bx {
+	background: var(--light-orange);
+	color: var(--orange);
+}
+#content main .box-info li .text h3 {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--dark);
+}
+#content main .box-info li .text p {
+	color: var(--dark);	
+}
+
+
+
+
+
+#content main .table-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+	color: var(--dark);
+}
+#content main .table-data > div {
+	border-radius: 20px;
+	background: var(--light);
+	padding: 24px;
+	overflow-x: auto;
+}
+#content main .table-data .head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
+}
+#content main .table-data .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+#content main .table-data .head .bx {
+	cursor: pointer;
+}
+
+#content main .table-data .order {
+	flex-grow: 1;
+	flex-basis: 500px;
+}
+#content main .table-data .order table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#content main .table-data .order table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: left;
+	border-bottom: 1px solid var(--grey);
+}
+#content main .table-data .order table td {
+	padding: 16px 0;
+}
+#content main .table-data .order table tr td:first-child {
+	display: flex;
+	align-items: center;
+	grid-gap: 12px;
+	padding-left: 6px;
+}
+#content main .table-data .order table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+#content main .table-data .order table tbody tr:hover {
+	background: var(--grey);
+}
+#content main .table-data .order table tr td .status {
+	font-size: 10px;
+	padding: 6px 16px;
+	color: var(--light);
+	border-radius: 20px;
+	font-weight: 700;
+}
+#content main .table-data .order table tr td .status.completed {
+	background: var(--blue);
+}
+#content main .table-data .order table tr td .status.process {
+	background: var(--yellow);
+}
+#content main .table-data .order table tr td .status.pending {
+	background: var(--orange);
+}
+
+
+#content main .table-data .todo {
+	flex-grow: 1;
+	flex-basis: 300px;
+}
+#content main .table-data .todo .todo-list {
+	width: 100%;
+}
+#content main .table-data .todo .todo-list li {
+	width: 100%;
+	margin-bottom: 16px;
+	background: var(--grey);
+	border-radius: 10px;
+	padding: 14px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#content main .table-data .todo .todo-list li .bx {
+	cursor: pointer;
+}
+#content main .table-data .todo .todo-list li.completed {
+	border-left: 10px solid var(--blue);
+}
+#content main .table-data .todo .todo-list li.not-completed {
+	border-left: 10px solid var(--orange);
+}
+#content main .table-data .todo .todo-list li:last-child {
+	margin-bottom: 0;
+}
+/* MAIN */
+/* CONTENT */
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	#sidebar {
+		width: 200px;
+	}
+
+	#content {
+		width: calc(100% - 60px);
+		left: 200px;
+	}
+
+	#content nav .nav-link {
+		display: none;
+	}
+}
+
+
+
+
+
+
+@media screen and (max-width: 576px) {
+	#content nav form .form-input input {
+		display: none;
+	}
+
+	#content nav form .form-input button {
+		width: auto;
+		height: auto;
+		background: transparent;
+		border-radius: none;
+		color: var(--dark);
+	}
+
+	#content nav form.show .form-input input {
+		display: block;
+		width: 100%;
+	}
+	#content nav form.show .form-input button {
+		width: 36px;
+		height: 100%;
+		border-radius: 0 36px 36px 0;
+		color: var(--light);
+		background: var(--red);
+	}
+
+	#content nav form.show ~ .notification,
+	#content nav form.show ~ .profile {
+		display: none;
+	}
+
+	#content main .box-info {
+		grid-template-columns: 1fr;
+	}
+
+	#content main .table-data .head {
+		min-width: 420px;
+	}
+	#content main .table-data .order table {
+		min-width: 420px;
+	}
+	#content main .table-data .todo .todo-list {
+		min-width: 420px;
+	}
+}
+
+
+/* Hide all content sections by default */
+.content-section {
+    display: none;
+}
+
+/* Active section should be displayed */
+.content-section.active {
+    display: block;
+}
+
+
+/* Ensure dark mode affects the entire page */
+body.dark-mode {
+    color: white; /* Light text */
+}
+
+/* Sidebar dark mode styles */
+body.dark-mode #sidebar {
+    color: white;
+}
+
+body.dark-mode #sidebar a {
+    color: white;
+}
+
+/* Main content dark mode styles */
+body.dark-mode #main-content {
+    color: white;
+}
+
+/* Sections inside main content */
+body.dark-mode .content-section {
+    color: white;
+}
+
+
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 Columns */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.dashboard-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 5px solid;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-box i {
+    font-size: 25px;
+    color: #000000;
+}
+
+.dashboard-box span {
+    font-size: 17px;
+    font-weight: 750px;
+}
+
+.dashboard-box:hover {
+    background: #e2e6ea;
+    transform: scale(1.05);
+}
+
+/* Unique Left Border Colors */
+#box-dashboard { border-left-color: #007bff; }  /* Blue */
+#box-commandes { border-left-color: #28a745; }  /* Green */
+#box-stock { border-left-color: #ffc107; }  /* Yellow */
+#box-facturation { border-left-color: #dc3545; }  /* Red */
+#box-employes { border-left-color: #17a2b8; }  /* Cyan */
+#box-rapports { border-left-color: #6610f2; }  /* Purple */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Columns on smaller screens */
+    }
+}
+.content-section {
+    display: none; /* Initially hidden */
+}
+
+
+
+
+/* Default light mode for dashboard section */
+#dashboard-section {
+    color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Default light mode for dashboard boxes */
+.dashboard-box {
+    background-color: #ffffff;
+    color: #282828;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Dark mode styles */
+.dark-mode #dashboard-section {
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-box {
+    color: #000000;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+/* Hover effect */
+.dashboard-box:hover {
+    transform: scale(1.05);
+}
+
+
+
+.gestion-commandes-grid {
+    display: flex;
+    justify-content: left;
+    gap: 40px;
+}
+
+.gestion-commandes-box {
+    background-color: #ffffff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px; /* Increase the size of the box */
+    height: 200px; /* Increase the size of the box */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+	margin-top: 30px;
+}
+
+.gestion-commandes-box i {
+    font-size: 50px; /* Increase the size of the icons */
+    color: #000000;
+}
+
+.gestion-commandes-box span {
+    font-size: 20px;
+    color: #000000;
+}
+
+#box-boisson {
+    border-left: 5px solid blue; /* Blue left border for Bar */
+}
+
+#box-kitchen {
+    border-left: 5px solid red; /* Red left border for Restaurant */
+}
+
+.gestion-commandes-box:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05); /* Slight hover effect */
+}
+
+
+
+/* Style for the "Passez une commande ici" button */
+.order-btn {
+    padding: 10px 20px;
+    background-color: #0056b3; /* Assuming the main button color is blue, adjust if necessary */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    transition: background-color 0.3s ease;
+	margin-left: 5px;
+}
+
+.order-btn:hover {
+    background-color: #347cc9; /* Darker blue when hovered */
+}
+
+.order-btn i {
+    font-size: 20px; /* Adjust the icon size */
+}
+
+
+#boisson-details-container h2 {
+    margin-top: 20px;  /* Adjust this value to control the distance from the top */
+    font-size: 24px;   /* Optional: Adjust font size if needed */
+    color: #333;       /* Optional: Change text color */
+    font-weight: bold; /* Optional: Make the text bold */
+}
+
+#boisson-details-container .order-btn {
+    padding: 10px 20px;
+    background-color: #0056b3; /* Assuming the main button color is blue, adjust if necessary */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    transition: background-color 0.3s ease;
+	margin-left: 5px;
+}
+
+
+#available-drinks-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.drink-item {
+    margin-bottom: 15px;
+}
+
+.drink-item p {
+    font-size: 16px;
+    color: #000000;
+}
+
+.drink-item p strong {
+    font-weight: bold;
+}
+
+
+
+
+
+#gestion-commandes-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#boisson-details-container {
+    display: none; /* Initially hidden */
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #608dbd;
+    background-color: #ffffff;
+    float: right;
+    margin-top: -270px;
+    border-left: 5px solid black; /* Black left border */
+    font-size: 16px;
+    border-radius: 20px;
+    overflow: auto; /* Enables scrolling */
+    max-height: 650px; /* Adjust as needed */
+}
+
+
+#boisson-details-container h3 {
+	text-align: right;
+	font-size: 25px;
+	color: #548cc8;
+}
+
+#available-drinks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#available-drinks-table th, #available-drinks-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#available-drinks-table th {
+    background-color: #f1f1f1;
+}
+
+/* Quantity stock color logic */
+#available-drinks-table td:nth-child(2) {
+    font-weight: bold;
+    color: green; /* Default */
+}
+
+
+
+
+
+
+
+
+/* Basic Styles for the Order Section */
+#order-section {
+    background-color: #f9f9f9; /* Light background for the order form */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles */
+#order-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Form Fields */
+#order-section label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#order-section select, #order-section input {
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#order-section input[type="number"] {
+    max-width: 100px;
+}
+
+#order-section button {
+    background-color: #4CAF50; /* Green color for buttons */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#order-section button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Step 2 Verification Section */
+#order-step-2 p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+#order-step-2 span {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Back Button and Submit Button */
+#order-step-2 button {
+    background-color: #2196F3; /* Blue for back button */
+    color: white;
+}
+
+#order-step-2 button:hover {
+    background-color: #0b7dda; /* Darker blue on hover */
+}
+
+/* Style for the Total Price Display */
+#total-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50; /* Green color */
+}
+
+/* Hide the second step initially */
+#order-step-2 {
+    display: none;
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 600px) {
+    #order-section {
+        padding: 15px;
+    }
+
+    #order-section h2 {
+        font-size: 20px;
+    }
+
+    #order-section input, #order-section select {
+        font-size: 14px;
+    }
+
+    #order-section button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #order-step-2 p {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+/* Drink Order Modal */
+.drink-order-modal {
+    display: none;
+    position: fixed;
+    top: -80px;
+    left: 120px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.359);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.drink-modal-content {
+    background: white;
+    width: 70%;
+    max-width: 760px;
+    padding: 20px;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+    border-radius: 12px;
+    margin-top: -120px;
+}
+
+/* Close Button */
+.drink-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 45px;
+    cursor: pointer;
+	color: red;
+}
+
+/* Step Indicator */
+.drink-step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+#drink-step-circle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50%;
+    color: #548cc8;
+}
+
+/* Table Styling */
+#drink-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+	background-color: white; /* Ensure background is visible */
+}
+
+#drink-table th, #drink-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+	position: relative; /* Required for pseudo-element */
+}
+
+
+/* Transparent Separator Between Columns */
+#drink-table th:not(:last-child), 
+#drink-table td:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.297);
+}
+
+/* Optional: Add subtle column separation effect */
+#drink-table th::after, #drink-table td::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.224); /* Adjust transparency */
+}
+
+#drink-table th {
+    background: #548cc8;
+    color: white;
+}
+
+/* Style the 'Suivant' button inside the modal */
+#drink-order-modal button[onclick="nextStep()"] {
+    background-color: #548cc8;
+    color: white;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#drink-order-modal button[onclick="nextStep()"]:hover {
+    background: #406fa6; /* Lighter Green on Hover */
+}
+
+/* Style the 'Confirmer la commande' button inside the modal */
+#drink-order-modal button[onclick="submitOrder()"] {
+    background-color: #548cc8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Hover effect */
+#drink-order-modal button[onclick="submitOrder()"]:hover {
+    background: #406fa6; /* Lighter Green */
+}
+
+#boisson-details-container button {
+    background-color: #548cc8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#boisson-details-container button:hover {
+    background-color: #406fa6;
+}
+
+
+
+
+
+
+/* Drink Order Modal */
+.drink-order-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 15px;
+    left: 120px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.511);
+}
+
+/* Modal Content */
+.drink-modal-content {
+    background: white;
+    width: 60%;
+    padding: 20px;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Close Button */
+.drink-close {
+    position: absolute;
+    top: -12px;
+    right: 10px;
+    font-size: 45px;
+    cursor: pointer;
+	color: red;
+}
+
+/* Step Indicator */
+.drink-step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/* Total Price Styling */
+.drink-total-price-box {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+#kitchen-details-container {
+    display: none; /* Initially hidden */
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #608dbd;
+    border-left: 5px solid;
+    background-color: #ffffff;
+    float: right;
+    margin-top: -270px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+#kitchen-details-container h3 {
+    text-align: right;
+    font-size: 25px;
+    color: #548cc8;
+}
+
+#available-kitchen-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#available-kitchen-table th, #available-kitchen-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#available-kitchen-table th {
+    background-color: #f1f1f1;
+}
+
+/* Quantity stock color logic */
+#available-kitchen-table td:nth-child(2) {
+    font-weight: bold;
+    color: green; /* Default */
+}
+
+#available-kitchen-table td[style*="color:red"] {
+    color: red !important; /* Low stock warning */
+}
+
+
+
+
+
+
+
+
+/* Kitchen Order Modal Styling */
+.kitchen-order-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 15px;
+    left: 120px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.511);
+}
+
+/* Kitchen Modal Content */
+.kitchen-modal-content {
+    background-color: white;
+    width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.kitchen-close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+	color: red;
+	font-size: 45px;
+}
+
+.kitchen-step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#kitchen-step-circle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50%;
+    background: #548cc8;
+    color: white;
+}
+
+
+/* Table Styling */
+#kitchen-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#kitchen-table th, #kitchen-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#kitchen-table th {
+    background-color: #548cc8;
+	color: white;
+}
+
+/* Total Price Box */
+.kitchen-total-price-box {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Buttons */
+.kitchen-modal-content button {
+    background-color: #548cc8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.kitchen-modal-content button:hover {
+    background-color: #406fa6;
+}
+
+
+
+
+
+
+
+
+/* Modal Background */
+.profile-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    top: 60px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content */
+.profile-modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Close Button */
+.close-profile-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: red;
+}
+
+/* Profile Details */
+.profile-details {
+    text-align: center;
+}
+
+.profile-details img {
+    width: 90px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-details h3 {
+    margin: 5px 0;
+    font-size: 19px;
+}
+.profile-details p,
+.profile-details span {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.profile-details i {
+    margin-right: 8px;
+    color: #888;
+}
+
+/* Logout Button */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.logout-btn i {
+    margin-right: 5px;
+}
+/* Hover Effect */
+.logout-btn:hover {
+    background-color: #ff1e1e;
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
+.invoice-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+
+.invoice-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.invoice-box table td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+.invoice-box table tr td:nth-child(2) {
+    text-align: center;
+}
+
+.invoice-box table tr td:nth-child(3),
+.invoice-box table tr td:nth-child(4) {
+    text-align: right;
+}
+
+.invoice-box table tr.top table td {
+    padding-bottom: 20px;
+}
+
+.invoice-box table tr.heading td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.invoice-box table tr.item td {
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-box table tr.item.last td {
+    border-bottom: none;
+}
+
+.invoice-box table tr.total td:nth-child(4) {
+    border-top: 2px solid #eee;
+    font-weight: bold;
+}
+
+.payment-status,
+.thank-you {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.ordered-items-heading {
+    margin-top: 20px;
+}
+
+
+
+
+
+.payment-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.payment-status,
+.payment-mode {
+    text-align: right;
+    padding: 0 10px;
+}
+
+.payment-status {
+    border-right: 3px solid rgba(0, 0, 0, 0.191); /* Light gray vertical line */
+}
+.payment-mode {
+    border-right: 3px solid rgba(0, 0, 0, 0.191); /* Light gray vertical line */
+}
+
+.payment-mode {
+    margin-left: 20px;
+}
