@@ -1,0 +1,1200 @@
+.form-group i {
+    font-size: 15px; /* Adjust size */
+    margin-right: 0px; /* Space between icon and text */
+    color:rgba(33, 97, 140, 0.19); /* Icon color */
+    margin-top: 0px;
+}
+.form-group input {
+    font-size: 14px; /* Adjust size */
+    width: 440px;
+    margin-left: 18px;
+}
+
+/* General container to center the form */
+.bottle-management-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    padding: 20px;
+    flex-wrap: wrap; /* Allow items to wrap if the screen is too small */
+}
+
+/* Form styling */
+.bottle-form {
+    width: 100%;
+    max-width: 500px; /* Limiting max-width for better readability */
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    margin-top: -5px;
+}
+
+/* Icon styling */
+.icon-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.icon-green,
+.icon-red {
+    font-size: 36px;
+    transition: transform 0.3s ease;
+}
+
+.icon-green:hover,
+.icon-red:hover {
+    transform: scale(1.1);
+}
+
+.icon-green {
+    color: #28a745;
+}
+
+.icon-red {
+    color: #dc3545;
+}
+
+/* Vertical line divider */
+.vertical-line {
+    width: 1px;
+    background: rgba(0, 0, 0, 0.2);
+    height: 90%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Form fields */
+.form-group {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+input:focus {
+    border-color: #007bff;
+    background-color: #eaf5ff;
+    outline: none;
+}
+
+/* Button styling */
+.report-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 265px; /* Adjust max-width for button */
+    margin: -10px auto 10px; /* Moves the button up slightly */
+    position: relative;
+    top: -20px;
+    border-radius: 5px;
+}
+
+.report-btn i {
+    font-size: 18px;
+}
+
+.report-btn:hover {
+    background-color: #2980b9;
+}
+
+.report-btn:active {
+    background-color: #21618c;
+}
+
+/* Calculation results section */
+#calculation-results {
+    width: 70%; /* Set width to 70% */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95); /* White background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: -20px auto 0 auto; /* Centers it horizontally */
+    text-align: center; /* Centers text inside */
+    border-radius: 5px;
+    position: relative;
+    top: 0px; /* To adjust spacing for better visual alignment */
+    display: none; /* Hide the div by default */
+}
+
+
+/* Styling for the results */
+#calculation-results p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+    justify-content: left;
+}
+
+/* Graph section hidden by default */
+#graph-section {
+    display: none;
+}
+
+#graph-section h3 {
+    margin-top: -42px;
+    margin-left: 18px;
+}
+#graph-section h2 {
+    font-size: 19px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .bottle-form {
+        max-width: 90%; /* Allow the form to take up more width on smaller screens */
+        padding: 15px;
+    }
+
+    .report-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    #calculation-results h3 {
+        font-size: 18px;
+    }
+
+    #calculation-results p {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+.manage-stock-btn {
+    background-color: #6c757d; /* Gray color */
+    color: white;
+    padding: 20px 18px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    position: absolute;
+    top: -14px;
+    right: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.manage-stock-btn i {
+    font-size: 18px;
+}
+
+.manage-stock-btn:hover {
+    background-color: #5a6268; /* Darker gray */
+    transform: scale(1.05);
+}
+
+.manage-stock-btn:active {
+    background-color: #4e555b; /* Even darker gray */
+    transform: scale(0.98);
+}
+
+/* Ensure the parent div is positioned relative */
+#graph-section {
+    position: relative;
+}
+
+
+
+
+
+
+
+
+/* Modal Overlay - Hidden by Default */
+.bottles-modal-overlay {
+    display: none; /* Ensure the modal is hidden initially */
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Content - Full Section */
+.bottles-modal-content {
+    background: rgba(0, 7, 54, 0.663);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    color: #ffffff;
+    width: 100%; /* Covers almost the whole section */
+    max-width: 1280px; /* Allows it to scale on larger screens */
+    height: 93vh; /* Covers most of the viewport height */
+    padding: 30px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+    animation: bottlesFadeIn 0.3s ease-in-out;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Moves content up */
+    align-items: center; /* Centers content horizontally */
+    margin-right: -260px;
+    top: 30px;
+}
+
+
+/* Close Button */
+.bottles-modal-close {
+    position: absolute;
+    top: -5px;  /* Position close to the top */
+    right: 10px; /* Position close to the right */
+    font-size: 40px;
+    color: rgb(255, 255, 255); /* White by default */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.3s;
+}
+
+/* Hover Effect: Turns Red */
+.bottles-modal-close:hover {
+    color: rgb(255, 0, 0); /* Red when hovered */
+    transform: scale(1.2); /* Slight zoom effect */
+}
+
+
+/* Fade-in Animation */
+@keyframes bottlesFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+/* ========================= */
+/* Glassmorphic Modal Title  */
+/* ========================= */
+.bottles-modal-title {
+    font-size: 70px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    margin-top: -10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ffbf47, #ff7b47);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ============================ */
+/* Stock Management Buttons     */
+/* ============================ */
+.stock-options {
+    display: flex;
+    flex-wrap: nowrap; /* Prevents wrapping */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 820px;
+    margin: 20px auto;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+
+
+/* Hover Effect */
+.stock-options button:hover {
+    background: #ffbf47;
+    color: #fff;
+}
+
+/* Active (Clicked) Button */
+.stock-options button.active {
+    background: rgba(97, 185, 193, 0.4) !important; /* Highlight color */
+    color: #fff !important;
+    border-color: #ffffff !important; /* Slightly darker border */
+    transform: scale(1.05); /* Slight enlargement */
+}
+
+/* ============================ */
+/* Modern Glassmorphism Button  */
+/* ============================ */
+.stock-btn {
+    background: rgba(116, 116, 116, 0.735);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.1),
+                0px 8px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
+    min-width: 220px; /* Ensures buttons are evenly sized */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    white-space: nowrap; /* Prevents text from wrapping */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Button Icons */
+.stock-btn i {
+    font-size: 20px;
+    color: #ffbf47;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+/* Button Hover Effect */
+.stock-btn:hover {
+    background: linear-gradient(135deg, #ffbf47, #ff7b47);
+    color: #1e2f27;
+    box-shadow: 0px 10px 25px rgba(255, 191, 71, 0.4);
+}
+
+.stock-btn:hover i {
+    color: #1e1e2f;
+}
+
+/* ========================= */
+/* Responsive Adjustments    */
+/* ========================= */
+@media (max-width: 768px) {
+    .stock-options {
+        flex-wrap: nowrap; /* Prevents buttons from stacking */
+        overflow-x: auto; /* Adds horizontal scroll if needed */
+        padding-bottom: 10px; /* Spacing for better usability */
+        justify-content: flex-start;
+    }
+
+    .stock-btn {
+        flex-shrink: 0; /* Prevents buttons from shrinking */
+        min-width: 180px;
+    }
+}
+
+
+/* Stock Content */
+.stock-content {
+    margin-top: -10px;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #ddd;
+    width: 100%;
+    max-width: 950px;
+    border-radius: 10px;
+    border: 1px solid white; /* White border on all sides */
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bottles-modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .stock-btn {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+
+/* Form container */
+.bottle-form-container {
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Form label */
+.bottle-label {
+    color: #ffffff;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Input fields */
+.bottle-input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.bottle-input:focus {
+    border-color: #007bff;
+}
+
+/* Submit button */
+.bottle-submit-btn {
+    background: #ffbf47;
+    color: white;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background 0.3s;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.bottle-submit-btn:hover {
+    background: linear-gradient(135deg, #ffbf47, #ff7b47);
+    color: #ffffff;
+    box-shadow: 0px 10px 25px rgba(255, 191, 71, 0.4);
+}
+
+/* Success message */
+.bottle-success-message {
+    color: #28a745;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Stock Container */
+.stock-container {
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+/* Title Styling */
+.stock-container .stock-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+/* Stock List - Smooth Scrolling & Layout */
+.stock-container .stock-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Dynamic columns */
+    gap: 12px;
+    padding: 10px;
+    max-height: 55vh; /* Controlled height */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #ffbf47 rgba(30, 30, 30, 0.6); /* Modern scrollbar */
+}
+
+/* Custom Scrollbar (For Webkit Browsers) */
+.stock-container .stock-list::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}
+
+.stock-container .stock-list::-webkit-scrollbar-thumb {
+    background: #ffbf47;
+    border-radius: 10px;
+}
+
+.stock-container .stock-list::-webkit-scrollbar-thumb:hover {
+    background: #ffa500;
+}
+
+/* Stock Item */
+.stock-container .stock-item {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent for contrast */
+    padding: 14px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.stock-container .stock-item:hover {
+    background: rgba(112, 209, 217, 0.216);
+    color: #222;
+    transform: scale(1.05);
+}
+
+/* Bottle Name */
+.stock-container .bottle-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Quantity Styling */
+.stock-container .stock-quantity {
+    font-weight: bold;
+    color: #ffbf47;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .stock-container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .stock-container .stock-list {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Enables horizontal scrolling for mobile */
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .stock-container .stock-item {
+        min-width: 160px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* History Container */
+.history-container {
+    margin: 20px auto;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    border-radius: 10px; /* Soft edges */
+    max-height: 505px;
+    margin-top: 0px;
+}
+
+/* Scrollbar Styling */
+.history-container::-webkit-scrollbar {
+    height: 8px; /* Adjust height for horizontal scrollbar */
+}
+
+.history-container::-webkit-scrollbar-track {
+    background: #ddd; /* Light background */
+    border-radius: 10px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+    background: #888; /* Darker scroll thumb */
+    border-radius: 10px;
+}
+
+.history-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker on hover */
+}
+
+/* Title */
+.history-container h2 {
+    text-align: center;
+    font-size: 20px; /* Fixed font size */
+    font-weight: bold;
+    margin-top: -35px;
+    color: #ffffff;
+}
+
+/* History Entry */
+.history-entry {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 1px;
+    min-width: 700px; /* Ensures content doesn't shrink */
+    margin-top: 5px;
+}
+
+/* Received Section */
+.history-received {
+    flex: 1;
+    background: #e8f5e9; /* Light green */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Ensure <h3> fits within the background */
+.history-received h3, .history-given h3 {
+    background: inherit;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.history-received h3 {
+    color: #2e7d32;
+    margin-bottom: 5px;
+}
+
+.history-received p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Given Section */
+.history-given {
+    flex: 1;
+    background: #ffebee; /* Light red */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.history-given h3 {
+    color: #c62828;
+    margin-bottom: 5px;
+}
+
+.history-given p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Date Styling */
+.history-date {
+    font-size: 12px;
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .history-container {
+        overflow-x: auto; /* Ensures scrolling on smaller screens */
+        padding-bottom: 10px; /* Space for scroll */
+    }
+
+    .history-entry {
+        flex-direction: column;
+        min-width: 100%; /* Prevents shrinking */
+    }
+}
+
+
+
+
+
+
+
+
+/* Stock Reports Grid Layout */
+.stock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 2x2 grid */
+    gap: 20px; /* Space between grid items */
+    width: 100%;
+}
+
+/* Stock Report Card */
+.stock-report {
+    background: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    border-radius: 12px;
+    padding: 15px;
+    max-width: 100%;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Header Section (Color Coded) */
+.stock-header {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    text-align: center;
+    color: #fff;
+}
+
+/* We Owe Provider */
+.owe-provider .stock-header {
+    background: rgb(255, 77, 77);
+}
+
+.owe-provider {
+    border: 2px solid rgba(255, 77, 77, 0.8);
+    background-color: rgba(255, 77, 77, 0.135);
+}
+
+/* Provider Owes Us */
+.owe-us .stock-header {
+    background: rgb(50, 205, 50);
+}
+
+.owe-us {
+    border: 2px solid rgba(50, 205, 50, 0.8);
+    background-color: rgba(50, 205, 50, 0.111);
+}
+
+/* Neutral Case */
+.neutral .stock-header {
+    background: rgb(128, 128, 128);
+}
+
+.neutral {
+    border: 2px solid rgba(128, 128, 128, 0.8);
+}
+
+/* Content Inside the Report */
+.stock-details {
+    padding: 12px;
+    font-size: 15px;
+    color: #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Quantity Styling */
+.stock-quantity {
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+}
+
+/* Hover Effects */
+.stock-report:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Date Styling */
+.date-reported {
+    font-size: 12px;
+    font-weight: normal;
+    color: #ffffff;
+    margin-top: 5px;
+}
+
+/* Provider Company Name */
+.provider-company {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffbf47be; /* Golden Yellow */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Scrollable Debt Report Section */
+#debt-report-section {
+    max-height: 510px; /* Set a fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Prevent text from touching the scrollbar */
+}
+
+/* Custom Scrollbar for Debt Report Section */
+#debt-report-section::-webkit-scrollbar {
+    width: 15px;
+}
+
+#debt-report-section::-webkit-scrollbar-thumb {
+    background: gray; /* Red thumb to match "owe-provider" theme */
+    border-radius: 6px;
+}
+
+#debt-report-section::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.774); /* Light background */
+    border-radius: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SweetAlert2 Custom Styling */
+.swal2-popup {
+    width: 400px !important; /* Adjust modal width */
+    font-size: 16px !important;
+    padding: 20px !important;
+    border-radius: 15px !important; /* Rounded corners */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2) !important;
+    background: linear-gradient(135deg, #f0f0f0, #ffffff) !important;
+    margin-left: 200px;
+}
+
+/* Title Styling */
+.swal2-title {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+}
+
+/* Text Styling */
+.swal2-html-container {
+    font-size: 14px !important;
+    color: #555 !important;
+}
+
+/* Buttons Styling */
+.swal2-confirm, .swal2-cancel {
+    font-size: 14px !important;
+    padding: 8px 15px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* Confirm Button */
+.swal2-confirm {
+    background: #28a745 !important;
+    color: white !important;
+}
+
+.swal2-confirm:hover {
+    background: #218838 !important;
+}
+
+/* Cancel Button */
+.swal2-cancel {
+    background: #dc3545 !important;
+    color: white !important;
+}
+
+.swal2-cancel:hover {
+    background: #c82333 !important;
+}
+
+/* Icon Styling */
+.swal2-icon {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: #ffc107 !important;
+    color: #ffc107 !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #dc3545 !important;
+    color: #dc3545 !important;
+}
+
+.swal2-icon.swal2-success {
+    border-color: #28a745 !important;
+    color: #28a745 !important;
+    font-size: 10px;
+}
+
+/* Input Fields Styling */
+.swal2-input {
+    font-size: 14px !important;
+    height: 35px !important;
+    padding: 5px !important;
+    border-radius: 5px !important;
+    border: 1px solid #ddd !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Apply Bootstrap styling */
+#gestion-conges-container {
+    display: none;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* Headings */
+#gestion-conges-container h2 {
+    text-align: center;
+    color: #161718;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 21px;
+    margin-top: -40px;
+}
+
+#gestion-conges-container h3 {
+    text-align: center;
+    color: #343a40;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Container for the form */
+#leaveRequestForm {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; /* Centers the form horizontally */
+    display: block; /* Ensures block-level display */
+}
+
+#leaveRequestForm label {
+    font-weight: 600;
+    color: #495057;
+}
+
+#leaveRequestForm input,
+#leaveRequestForm select,
+#leaveRequestForm textarea {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#leaveRequestForm textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+
+
+/* Table Styling */
+#gestion-conges-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Updated Borders - More Elegant and Minimal */
+#gestion-conges-container th,
+#gestion-conges-container td {
+    padding: 12px;
+    text-align: left;
+    position: relative;
+}
+
+/* Subtle Horizontal Separator */
+#gestion-conges-container tbody tr:not(:last-child) td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Soft Vertical Separators Between Columns */
+#gestion-conges-container td::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 1px;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.08); /* Slightly visible column divider */
+}
+
+#gestion-conges-container td:last-child::after {
+    display: none; /* Remove the last column's separator */
+}
+
+#gestion-conges-container th {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#gestion-conges-container tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* Action Icons */
+.leave-action {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.leave-approve {
+    color: #28a745;
+}
+
+.leave-approve:hover {
+    background: rgba(40, 167, 69, 0.2);
+    transform: scale(1.1);
+}
+
+.leave-reject {
+    color: #dc3545;
+}
+
+.leave-reject:hover {
+    background: rgba(220, 53, 69, 0.2);
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+/* Styling the form and icons */
+#leaveRequestForm label {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#leaveRequestForm label i {
+    margin-right: 8px;
+    font-size: 18px; /* Adjust icon size */
+}
+
+#leaveRequestForm input,
+#leaveRequestForm select,
+#leaveRequestForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.total-days-container {
+    display: flex;
+    justify-content: flex-start; /* Align button to the left */
+    align-items: center;
+    margin-top: 12px; /* Add space between form fields and total days */
+    gap: 10px; /* Add space between the total text and button */
+}
+
+#leaveRequestForm button[type="submit"] {
+    background-color: #007bffb0; /* Adjust the background color */
+    border: none;
+    padding: 5px 25px; /* Adjust padding */
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect on the submit button */
+#leaveRequestForm button[type="submit"]:hover {
+    background-color: #0057b3d1; /* Change to a darker blue on hover */
+}
+
+/* Style for the icon inside the submit button */
+#leaveRequestForm button[type="submit"] i {
+    font-size: 24px; /* Adjust icon size */
+}
+

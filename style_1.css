@@ -1,0 +1,520 @@
+.add-stock-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #3C91E6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.add-stock-btn:hover {
+    background-color: #2d7bc7;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: scroll;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #3C91E6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #2d7bc7;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Dark mode styles */
+.dark-mode .modal-content {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select {
+    background-color: #333;
+    color: white;
+    border-color: #444;
+}
+
+
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#stock-table {
+    width: 100% !important;
+    table-layout: fixed; /* Ensures that the table width is distributed evenly */
+}
+
+#stock-table th, #stock-table td {
+    text-align: center; /* Centers the text within the columns */
+}
+
+#stock-table th {
+    padding: 10px; /* Add padding to table header for better readability */
+}
+
+#stock-table td {
+    padding: 8px; /* Add padding to table cells */
+}
+
+/* Specific column width adjustments if needed */
+#stock-table th:nth-child(1), #stock-table td:nth-child(1) {
+    width: 30%; /* Adjust the first column's width */
+}
+
+#stock-table th:nth-child(2), #stock-table td:nth-child(2) {
+    width: 30%; /* Adjust the second column's width */
+}
+
+#stock-table th:nth-child(3), #stock-table td:nth-child(3) {
+    width: 25%; /* Adjust the third column's width */
+}
+
+#stock-table th:nth-child(4), #stock-table td:nth-child(3) {
+    width: 15%; /* Adjust the third column's width */
+}
+
+
+
+#employee-table {
+    width: 100% !important;
+    table-layout: fixed; /* Ensures that the table width is distributed evenly */
+}
+
+#employee-table th, #employee-table td {
+    text-align: center; /* Centers the text within the columns */
+}
+
+#employee-table th {
+    padding: 10px; /* Add padding to table header for better readability */
+}
+
+#employee-table td {
+    padding: 8px; /* Add padding to table cells */
+}
+
+/* Specific column width adjustments if needed */
+#employee-table th:nth-child(1), #employee-table td:nth-child(1) {
+    width: 10%; /* Adjust the first column's width */
+}
+
+#employee-table th:nth-child(2), #employee-table td:nth-child(2) {
+    width: 10%; /* Adjust the second column's width */
+}
+
+#employee-table th:nth-child(3), #employee-table td:nth-child(3) {
+    width: 8%; /* Adjust the third column's width */
+}
+
+#employee-table th:nth-child(4), #employee-table td:nth-child(4) {
+    width: 10%; /* Adjust the third column's width */
+}
+
+#employee-table th:nth-child(5), #employee-table td:nth-child(5) {
+    width: 20%; /* Adjust the third column's width */
+}
+
+
+
+#equipement-table {
+    width: 100% !important;
+    table-layout: fixed; /* Ensures that the table width is distributed evenly */
+}
+
+#equipement-table th, #equipement-table td {
+    text-align: center; /* Centers the text within the columns */
+}
+
+#equipement-table th {
+    padding: 10px; /* Add padding to table header for better readability */
+}
+
+#equipement-table td {
+    padding: 8px; /* Add padding to table cells */
+}
+
+/* Specific column width adjustments if needed */
+#equipement-table th:nth-child(1), #equipement-table td:nth-child(1) {
+    width: 30%; /* Adjust the first column's width */
+}
+
+#equipement-table th:nth-child(2), #equipement-table td:nth-child(2) {
+    width: 30%; /* Adjust the second column's width */
+}
+
+#equipement-table th:nth-child(3), #equipement-table td:nth-child(3) {
+    width: 40%; /* Adjust the third column's width */
+}
+
+
+
+
+#equipement-endommage-table {
+    width: 100% !important;
+    table-layout: fixed; /* Ensures that the table width is distributed evenly */
+}
+
+#equipement-endommage-table th, #equipement-endommage-table td {
+    text-align: center; /* Centers the text within the columns */
+}
+
+#equipement-endommage-table th {
+    padding: 10px; /* Add padding to table header for better readability */
+}
+
+#equipement-endommage-table td {
+    padding: 8px; /* Add padding to table cells */
+}
+
+/* Specific column width adjustments if needed */
+#equipement-endommage-table th:nth-child(1), #equipement-endommage-table td:nth-child(1) {
+    width: 40%; /* Adjust the first column's width */
+}
+
+#equipement-endommage-table th:nth-child(2), #equipement-endommage-table td:nth-child(2) {
+    width: 40%; /* Adjust the second column's width */
+}
+
+#equipement-endommage-table th:nth-child(3), #equipement-endommage-table td:nth-child(3) {
+    width: 20%; /* Adjust the third column's width */
+}
+
+
+
+#stock-kitchen-table {
+    width: 95% !important;
+    table-layout: fixed; /* Ensures that the table width is distributed evenly */
+}
+
+#stock-kitchen-table th, #stock-kitchen-table td {
+    text-align: center; /* Centers the text within the columns */
+}
+
+#stock-kitchen-table th {
+    padding: 10px; /* Add padding to table header for better readability */
+}
+
+#stock-kitchen-table td {
+    padding: 8px; /* Add padding to table cells */
+}
+
+/* Specific column width adjustments if needed */
+#stock-kitchen-table th:nth-child(1), #stock-kitchen-table td:nth-child(1) {
+    width: 10%; /* Adjust the first column's width */
+}
+
+#stock-kitchen-table th:nth-child(2), #stock-kitchen-table td:nth-child(2) {
+    width: 10%; /* Adjust the second column's width */
+}
+
+#stock-kitchen-table th:nth-child(3), #stock-kitchen-table td:nth-child(3) {
+    width: 8%; /* Adjust the third column's width */
+}
+
+#stock-kitchen-table th:nth-child(4), #stock-kitchen-table td:nth-child(4) {
+    width: 10%; /* Adjust the third column's width */
+}
+
+#stock-kitchen-table th:nth-child(5), #stock-kitchen-table td:nth-child(5) {
+    width: 10%; /* Adjust the third column's width */
+}
+
+#stock-kitchen-table th:nth-child(6), #stock-kitchen-table td:nth-child(6) {
+    width: 20%; /* Adjust the third column's width */
+}
+.button-group {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+    transition: background 0.3s ease-in-out;
+}
+
+.edit-btn {
+    background-color: #f0ad4e; /* Orange */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #ec971f;
+}
+
+.delete-btn {
+    background-color: #d9534f; /* Red */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+i {
+    font-size: 16px;
+}
+
+
+.close-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-top: -20px;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Employee table */
+#employee-attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#employee-attendance-table th,
+#employee-attendance-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#employee-attendance-table th {
+    background-color: #f4f4f4;
+}
+
+/* Radio buttons styling */
+#employee-attendance-table td input[type="radio"] {
+    margin-right: 10px;
+}
+
+#employee-attendance-manage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#employee-attendance-manage-table th, #employee-attendance-manage-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#employee-attendance-manage-table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#employee-attendance-manage-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#employee-attendance-manage-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for radio buttons */
+#employee-attendance-manage-table label {
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+
+/* Save button */
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    
+    margin-top: 20px;
+}
+
+.save-btn:hover {
+    background-color: #45a049;
+}
+
+
+.tab-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tab-btn:hover {
+    background-color: #ddd;
+}
+
+/* Tab content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#employee-list div {
+    margin-bottom: 10px;
+}
+
+#employee-list div label {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+#employee-list div input[type="radio"] {
+    margin-right: 10px;
+}
+
+
+.complaints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.complaint-card {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    position: relative; /* Needed to position the icon inside */
+}
+
+.complaint-card:hover {
+    transform: scale(1.05);
+}
+
+.complaint-card h3 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.complaint-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+
+.status-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline;  /* Ensures it's always displayed */
+    opacity: 1;  /* Ensures it's always visible */
+    visibility: visible;
+}
+
+.consult-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.consult-btn:hover {
+    background-color: #218838;
+}
