@@ -1,0 +1,61 @@
+/* Background */
+body {
+    background: linear-gradient(to right, #00b4d8, #007bff); /* Gradient from light blue to blue */
+    font-family: Arial, sans-serif; /* Optional: set a font family for the page */
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Input Fields */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.btn-default.submit {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.btn-default.submit:hover {
+    background: #0056b3;
+}
+
+/* Links */
+.reset_pass, .to_register {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.reset_pass:hover, .to_register:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.separator {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
